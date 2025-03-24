@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Operation Sorry</title>
+    <style>
+        body {
+            text-align: center;
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+            position: relative;
+            overflow: hidden; /* Prevents scrolling */
+        }
+        h2 {
+            font-size: 32px;
+            font-weight: bold;
+            margin-bottom: 40px; /* Added more space below the question */
+        }
+        .sticker img {
+            width: 150px; /* Adjust size as needed */
+            height: auto;
+            margin-bottom: 60px; /* More space below the sticker */
+        }
+        .button-container {
+            display: flex;
+            justify-content: center;
+            gap: 100px; /* More spacing between buttons */
+            margin-top: 30px;
+            width: 100%;
+        }
+        button {
+            padding: 14px 28px;
+            border: none;
+            cursor: pointer;
+            font-size: 20px;
+            border-radius: 8px;
+            transition: 0.3s;
+            position: relative;
+        }
+        .galit-pa {
+            background-color: red;
+            color: white;
+        }
+        .hindi-na {
+            background-color: green;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+
+    <h2>Sharmaine, are you still mad?</h2>
+
+    <div class="sticker">
+        <img src="image//quby-chan-cute.gif" alt="Sticker GIF" onerror="this.onerror=null; this.src='https://raw.githubusercontent.com/username/repository/main/image/giphy.gif';">
+    </div>
+
+    <div class="button-container">
+        <button class="hindi-na" onclick="alertSequence()">Hindi na</button>
+        <button class="galit-pa" onclick="moveButton()">Galit pa</button>
+    </div>
+
+    <script>
+        function alertSequence() {
+            alert("Yehey! Buti naman, Alam mo maganda ka Maine😊");
+            alert("You're beautiful even though without filter");
+            alert("Just be confident in yourself 🤗");
+        }
+
+        function moveButton() {
+            let button = document.querySelector(".galit-pa");
+            let screenWidth = window.innerWidth - 200; // Keeps within width
+            let screenHeight = window.innerHeight - 200; // Keeps within height
+            let x = Math.random() * screenWidth;
+            let y = Math.random() * screenHeight;
+            button.style.position = "absolute";
+            button.style.left = `${x}px`;
+            button.style.top = `${y}px`;
+        }
+    </script>
+
+</body>
+</html>
