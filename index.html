@@ -1,0 +1,138 @@
+<!DOCTYPE html><html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Top Secret Mission</title>
+  <style>
+    body {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+      background-color: #f0f0f0;
+      font-family: Arial, sans-serif;
+    }.box {
+  width: 400px;
+  border: 2px solid #ccc;
+  border-radius: 10px;
+  background-color: white;
+  color: #333;
+  padding: 20px;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.warning-label {
+  position: absolute;
+  top: 15px;
+  left: 20px;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.warning-label span {
+  font-size: 18px;
+}
+
+.message {
+  margin-top: 60px;
+  font-weight: bold;
+  flex: 1;
+  text-align: center;
+  word-wrap: break-word;
+}
+
+.progress-container {
+  width: 100%;
+  background-color: #e0e0e0;
+  border-radius: 20px;
+  overflow: hidden;
+  height: 25px;
+}
+
+.progress-bar {
+  height: 100%;
+  width: 0%;
+  background-color: green;
+  transition: width 0.2s linear;
+}
+
+.ok-button {
+  display: none;
+  align-self: flex-end;
+  padding: 8px 16px;
+  background-color: green;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+  </style>
+</head>
+<body>  <div class="box">
+    <div class="warning-label">
+      ⚠️ <span>WARNING!</span>
+    </div>
+    <div class="message" id="message">Loading...</div>
+    <div class="progress-container" id="progressContainer">
+      <div class="progress-bar" id="progressBar"></div>
+    </div>
+    <button class="ok-button" id="okButton" onclick="showNextMessage()">OK</button>
+  </div>  <script>
+    const messages = [
+      "Ms. Mae Uy Sanchez, 143 virus has been detected on your phone. Always press OK and read the message to remove it.",
+      "Hi, this is Justin. I have a top-secret mission—codename: Operation Balik Mae. Objective: ibalik ang dating vibes, no refunds, no exchanges!",
+      "Mae balik ka na po sa dati huhu Miss na Miss ko nayun",
+      "Madam ako lang naman toh ohh si Justin na tulugin si Justin na pabago bago ng isip pero hindi nagbabago pagtingin sayo",
+      "Ay sabi ko nga ayaw mo😣",
+      "May I ask?",
+      "Kung may chance na makakausap mo future mo ngayon, Anong pag uusapan natin?",
+      "ay ay ay ay corny😣",
+      "Dba sa China ka na soon? may nalaman nakong Chinese word madam",
+      "Chinese word ng Chinese is Nihao tas Chinese word ng Destiny Ikhao 😵‍💫",
+      "Luh binanatan nanaman kita madam mukhang need mo nakong patulan",
+      "Sabi ko nga matutulog nako 😴",
+      "Sige stop nanga corny na",
+      "Ingat ka po palagi ahh wala ako pamalit sayo"
+    ];
+
+    let currentIndex = 0;
+    const progressBar = document.getElementById("progressBar");
+    const progressContainer = document.getElementById("progressContainer");
+    const messageText = document.getElementById("message");
+    const okButton = document.getElementById("okButton");
+
+    function showLoading() {
+      let progress = 0;
+      const interval = setInterval(() => {
+        progress++;
+        progressBar.style.width = `${progress}%`;
+        if (progress >= 100) {
+          clearInterval(interval);
+          progressContainer.style.display = "none";
+          okButton.style.display = "block";
+          messageText.textContent = messages[currentIndex];
+          currentIndex++;
+        }
+      }, 100);
+    }
+
+    function showNextMessage() {
+      if (currentIndex < messages.length) {
+        messageText.textContent = messages[currentIndex];
+        currentIndex++;
+      } else {
+        okButton.style.display = "none";
+      }
+    }
+
+    window.onload = showLoading;
+  </script></body>
+</html>
